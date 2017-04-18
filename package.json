@@ -1,0 +1,29 @@
+{
+  "name": "html5_multiplayer",
+  "version": "1.0.0",
+  "description": "HTML5 Game Multiplayer Networking",
+  "main": "app.js",
+  "dependencies": {
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mochadwi/cl-html5-multiplayer-games.git"
+  },
+  "keywords": [
+    "games-networking",
+    "multiplayer",
+    "network-services",
+    "client-server"
+  ],
+  "author": "mochadwi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mochadwi/cl-html5-multiplayer-games/issues"
+  },
+  "homepage": "https://github.com/mochadwi/cl-html5-multiplayer-games#readme"
+}
