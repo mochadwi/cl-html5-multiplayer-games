@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.15.2",
+    "node-uuid": "^1.4.8",
     "socket.io": "^1.7.3"
   },
   "devDependencies": {},
