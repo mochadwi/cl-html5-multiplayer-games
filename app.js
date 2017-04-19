@@ -1,25 +1,32 @@
-var app = require('http').createServer(handler)
-var io = require('socket.io')(app);
-var fs = require('fs');
+var
+  gameport = process.env.PORT || 3000,
+  io       = require('socket.io'),
+  express  = require('express'),
+  UUID     = require('node-uuid'),
 
-app.listen(3000);
+  verbose  = true,
+  app      = express();
 
-function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
+// tell the game to listen for incoming connections
+app.listen(gameport);
+// log to know if connected successfully
+console.log('\t :: Express :: Listening on port ' + gameport);
+// By default, redirect to this pages
+app.get('/', function(req, res)
+{
+  res.sendFile(__dirname + '/games.html');
+}); // app.get '/'
 
-    res.writeHead(200);
-    res.end(data);
-  });
-}
+// routing, will listen for request on /*
+app.get('/*', function(req, res, next)
+{
+  // current file being requested
+  // var file = req.params[0];
+  var file = '';
 
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
+  // debugging purpose
+  if (verbose) console.log('\t :: Express :: File requested : ' + file);
+
+  // send the requesting client the file.
+  res.sendFile(__dirname + '/' + file);
+}); // app.get '/*'
